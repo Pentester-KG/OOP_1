@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список всех студентов</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+ <form class="d-flex" role="search" method="get" action="{% url 'students' %}">
+    <input class="form-control me-2" type="search" name="q" placeholder="Поиск" aria-label="Поиск">
+    <button class="btn btn-outline-success" type="submit">Поиск</button>
+</form>
+    <h2>Список всех студентов</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Номер студенческого билета</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Возраст</th>
+                <th>Дата зачисления</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+                <tr>
+                    <td>{{ student.student_id }}</td>
+                    <td>{{ student.first_name }}</td>
+                    <td>{{ student.last_name }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.enrollment_date }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">Студенты не найдены.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

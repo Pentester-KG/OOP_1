@@ -1,0 +1,7 @@
+.idea
+db.sqlite3
+venv/
+static/
+university/migrations/
+orders/migrations/
+university/__pycache__/
